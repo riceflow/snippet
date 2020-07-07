@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+  <meta charset="UTF-8">
+    <title>当HTMLの同階層にindex.m3u8及び紐づくtsファイルを配置すれば再生可能</title>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <video id="video" width="640" height="360" controls>
+      <script>
+        var video = document.getElementById('video');
+        var videoSrc = './index.m3u8';
+        if(Hls.isSupported()) {
+          var hls = new Hls();
+          hls.loadSource(videoSrc);
+          hls.attachMedia(video);
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+          video.src = './index.m3u8';
+          video.addEventListener('loadedmetadata', function() {
+            video.play();
+          });
+        }
+      </script>
+    </video>
+  </body>
+</html>
