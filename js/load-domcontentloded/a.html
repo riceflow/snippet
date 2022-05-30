@@ -1,0 +1,28 @@
+<html>
+<body onload="console.log('body load')">
+<button onclick="listadd()">テスト</button>
+<ul id="a"></ul>
+<script>
+    console.log("load start");
+    window.addEventListener('load',
+        function(){
+            console.log('ページの読み込みが完了しました。');
+        }
+    );
+    document.addEventListener('DOMContentLoaded',
+        function(e){
+            console.log('DOMツリーの解析が終わりました。');
+        }
+    );
+    console.log("load end");
+    function listadd(){
+        console.log('listadd Start');
+        let list = document.getElementById("a");
+        let child = document.createElement("li");
+        child.innerHTML = 'ko';
+        list.append(child);
+        console.log('listadd End');
+    }
+</script>
+</body>
+</html>
